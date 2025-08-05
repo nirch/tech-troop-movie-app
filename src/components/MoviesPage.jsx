@@ -6,6 +6,7 @@ function MoviesPage() {
     <div className="movies-page">
       <h1>Movies Page</h1>
       <Movie />
+      <Movie />
     </div>
   );
 }
