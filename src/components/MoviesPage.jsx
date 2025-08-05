@@ -1,8 +1,11 @@
+import Movie from "./Movie";
+import './MoviesPage.css'; 
 
 function MoviesPage() {
   return (
-    <div>
+    <div className="movies-page">
       <h1>Movies Page</h1>
+      <Movie />
     </div>
   );
 }
