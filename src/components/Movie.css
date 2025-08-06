@@ -3,6 +3,15 @@
   display: flex;
 }
 
+
+.movie .movie-poster {
+  width: 200px;
+}
+
+.movie .movie-poster img {
+  width: 100%;
+}
+
 .movie .genres {
   display: flex;
 }
