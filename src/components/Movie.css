@@ -5,7 +5,12 @@
 
 
 .movie .movie-poster {
-  width: 200px;
+  width: 20%;
+}
+
+.movie .movie-info {
+  width: 80%;
+  padding: 5px;
 }
 
 .movie .movie-poster img {
