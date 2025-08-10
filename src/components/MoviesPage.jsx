@@ -6,8 +6,16 @@ import { useState } from "react";
 function MoviesPage() {
   const [movies, setMovies] = useState(jsonMovies);
   const [comedyOnly, setComedyOnly] = useState(false);
-  const [filterText, setFilterText] = useState("Fo");
+  const [filterText, setFilterText] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
+  function handleMovieSelection(newSelectedMovie) {
+    if (selectedMovie === newSelectedMovie) {
+      setSelectedMovie(null);
+    } else {
+      setSelectedMovie(newSelectedMovie);
+    }
+  }
 
   let displayMovies = movies;
   filterMovies();
@@ -20,10 +28,11 @@ function MoviesPage() {
     }
 
     if (filterText) {
-      displayMovies = displayMovies.filter(movie => movie.name.toLowerCase().includes(filterText.toLowerCase()))
+      displayMovies = displayMovies.filter((movie) =>
+        movie.name.toLowerCase().includes(filterText.toLowerCase())
+      );
     }
   }
-
 
   return (
     <div className="movies-page">
@@ -44,7 +53,12 @@ function MoviesPage() {
         </button>
       </div>
       {displayMovies.map((movie) => (
-        <Movie movie={movie} key={movie.id} isSelected />
+        <Movie
+          movie={movie}
+          key={movie.id}
+          isSelected={movie === selectedMovie}
+          onSelected={handleMovieSelection}
+        />
       ))}
     </div>
   );
