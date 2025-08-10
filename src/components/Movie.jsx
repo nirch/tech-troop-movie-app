@@ -1,7 +1,7 @@
 import './Movie.css'
 
 
-function Movie({movie}) {
+function Movie({movie, isSelected}) {
 
   // formats the minutes runtime to: Xh Xm
   // For example: 142 -> 2h 22m
@@ -14,7 +14,7 @@ function Movie({movie}) {
 
 
   return (
-    <div className="movie">
+    <div className={"movie" + (isSelected ? " selected" : "")}>
       <div className="movie-poster">
         <img src={movie.poster} alt={movie.name} />
       </div>

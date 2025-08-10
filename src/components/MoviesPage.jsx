@@ -44,7 +44,7 @@ function MoviesPage() {
         </button>
       </div>
       {displayMovies.map((movie) => (
-        <Movie movie={movie} key={movie.id} />
+        <Movie movie={movie} key={movie.id} isSelected />
       ))}
     </div>
   );
