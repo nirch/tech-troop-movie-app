@@ -1,4 +1,4 @@
-import Movie from "./Movie";
+import Movie from "../components/Movie";
 import "./MoviesPage.css";
 import jsonMovies from "../data/movies.json";
 import { useState } from "react";
