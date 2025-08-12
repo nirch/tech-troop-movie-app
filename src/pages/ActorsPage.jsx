@@ -5,6 +5,11 @@ import { useState } from "react";
 function ActorsPage() {
   const [searchText, setSearchText] = useState("");
 
+  const results = [
+    "Item1", "Item2", "Item33333"
+  ];
+
+
   return (
     <Container size="md">
       <h1>Actors Page</h1>
@@ -12,6 +17,7 @@ function ActorsPage() {
         placeholder="Search actors..."
         searchText={searchText}
         onSearchChange={(value) => setSearchText(value)}
+        results={results}
       />
     </Container>
   );
