@@ -25,7 +25,12 @@ function SearchBox({
             className="results"
           >
             {results.map((result, index) => (
-              <Box key={index} p="sm" className="result-item">
+              <Box
+                key={index}
+                p="sm"
+                className="result-item"
+                onClick={() => onResultClicked(index)}
+              >
                 {result}
               </Box>
             ))}

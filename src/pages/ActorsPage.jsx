@@ -1,14 +1,30 @@
 import { Container } from "@mantine/core";
 import SearchBox from "../components/SearchBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function ActorsPage() {
   const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [actors, setActors] = useState([]);
 
-  const results = [
-    "Item1", "Item2", "Item33333"
-  ];
+  // const results = [
+  //   "Item1", "Item2", "Item33333"
+  // ];
 
+  useEffect(() => {
+    if (searchText) {
+      setSearchResults(["Item1", "Item2", "Item33333"]);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchText]);
+
+
+  function addActor(resultIndex) {
+    // alert(searchResults[resultIndex]);
+    setActors(actors.concat(searchResults[resultIndex]))
+    setSearchText("");
+  }
 
   return (
     <Container size="md">
@@ -17,11 +33,25 @@ function ActorsPage() {
         placeholder="Search actors..."
         searchText={searchText}
         onSearchChange={(value) => setSearchText(value)}
-        results={results}
+        results={searchResults}
+        onResultClicked={addActor}
       />
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam. Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam. Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam. Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam.
+        Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit
+        magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam.
+        Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit
+        magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam.
+        Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit
+        magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?
+      </p>
+      {actors.map((actor, index) => <p key={index}>{actor}</p>)}
     </Container>
   );
 }
