@@ -19,6 +19,9 @@ function ActorsPage() {
         onSearchChange={(value) => setSearchText(value)}
         results={results}
       />
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam. Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam. Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quibusdam. Delectus unde inventore eum quaerat excepturi placeat iure, tempore odit magni maxime deleniti quas consequuntur ab! Distinctio culpa fugiat ad?</p>
     </Container>
   );
 }

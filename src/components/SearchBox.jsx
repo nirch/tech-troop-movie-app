@@ -10,18 +10,28 @@ function SearchBox({
 }) {
   return (
     <>
-      <TextInput
-        placeholder={placeholder}
-        value={searchText}
-        onChange={(e) => onSearchChange(e.target.value)}
-      />
-      <Paper withBorder shadow="sm" w="100%" className="results">
-        {results.map((result, index) => (
-          <Box key={index} p="sm" className="result-item">
-            {result}
-          </Box>
-        ))}
-      </Paper>
+      <Box pos="relative">
+        <TextInput
+          placeholder={placeholder}
+          value={searchText}
+          onChange={(e) => onSearchChange(e.target.value)}
+        />
+        {results && results.length > 0 && (
+          <Paper
+            pos="absolute"
+            withBorder
+            shadow="sm"
+            w="100%"
+            className="results"
+          >
+            {results.map((result, index) => (
+              <Box key={index} p="sm" className="result-item">
+                {result}
+              </Box>
+            ))}
+          </Paper>
+        )}
+      </Box>
     </>
   );
 }
