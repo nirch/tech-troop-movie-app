@@ -26,7 +26,6 @@ function ActorsPage() {
   }, [searchText]);
 
   function addActor(resultIndex) {
-    // alert(searchResults[resultIndex]);
     setActors(actors.concat(searchResults[resultIndex]));
     setSearchText("");
   }

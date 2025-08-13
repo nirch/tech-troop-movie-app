@@ -1,22 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import MoviesPage from './pages/MoviesPage'
-import ActorsPage from './pages/ActorsPage'
+import { useState } from "react";
+import "./App.css";
+import MoviesPage from "./pages/MoviesPage";
+import ActorsPage from "./pages/ActorsPage";
+import { BrowserRouter, Route, Routes } from "react-router";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <ActorsPage />
-      {/* <MoviesPage /> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/actors" element={<ActorsPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-
-
-
-export default App
+export default App;
