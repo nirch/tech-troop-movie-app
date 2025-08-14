@@ -3,6 +3,7 @@ import "./MoviesPage.css";
 import jsonMovies from "../data/movies.json";
 import { useState } from "react";
 import { Container } from "@mantine/core";
+import { Navbar } from "../components/Navbar";
 
 function MoviesPage() {
   const [movies, setMovies] = useState(jsonMovies);
@@ -36,6 +37,8 @@ function MoviesPage() {
   }
 
   return (
+    <>
+    <Navbar />
     <Container size="md" className="movies-page">
       <h1>Movies Page</h1>
       <div className="filter-movies">
@@ -62,6 +65,7 @@ function MoviesPage() {
         />
       ))}
     </Container>
+    </>
   );
 }
 

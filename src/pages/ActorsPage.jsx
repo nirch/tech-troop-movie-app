@@ -3,6 +3,7 @@ import SearchBox from "../components/SearchBox";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ActorCard from "../components/ActorCard";
+import { Navbar } from "../components/Navbar";
 
 function ActorsPage() {
   const [searchText, setSearchText] = useState("");
@@ -31,6 +32,8 @@ function ActorsPage() {
   }
 
   return (
+    <>
+    <Navbar />
     <Container size="md">
       <h1>Actors Page</h1>
       <SearchBox
@@ -48,6 +51,7 @@ function ActorsPage() {
         ))}
       </Grid>
     </Container>
+    </>
   );
 }
 
