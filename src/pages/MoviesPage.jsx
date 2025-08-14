@@ -2,6 +2,7 @@ import Movie from "../components/Movie";
 import "./MoviesPage.css";
 import jsonMovies from "../data/movies.json";
 import { useState } from "react";
+import { Container } from "@mantine/core";
 
 function MoviesPage() {
   const [movies, setMovies] = useState(jsonMovies);
@@ -35,7 +36,7 @@ function MoviesPage() {
   }
 
   return (
-    <div className="movies-page">
+    <Container size="md" className="movies-page">
       <h1>Movies Page</h1>
       <div className="filter-movies">
         <input
@@ -60,7 +61,7 @@ function MoviesPage() {
           onSelected={handleMovieSelection}
         />
       ))}
-    </div>
+    </Container>
   );
 }
 

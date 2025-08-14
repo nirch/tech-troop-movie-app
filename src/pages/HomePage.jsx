@@ -1,5 +1,6 @@
 import { Button, Container, Group, Text } from "@mantine/core";
 import classes from "./HomePage.module.css";
+import { Link } from "react-router";
 
 function HomePage() {
   return (
@@ -24,6 +25,8 @@ function HomePage() {
 
         <Group className={classes.controls}>
           <Button
+            component={Link}
+            to="/login"
             size="xl"
             className={classes.control}
             variant="gradient"
