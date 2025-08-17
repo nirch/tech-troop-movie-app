@@ -2,9 +2,7 @@ import {
   Alert,
   Anchor,
   Button,
-  Checkbox,
   Container,
-  Group,
   Paper,
   PasswordInput,
   Text,
@@ -16,6 +14,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../auth/AuthProvider";
 import { useForm } from "@mantine/form";
+import { IconAlertCircle } from "@tabler/icons-react";
 
 export function LoginPage() {
   const form = useForm({
@@ -61,7 +60,7 @@ export function LoginPage() {
       <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
         {loginError && (
           <Alert
-            // icon={<IconAlertCircle size="1rem" />}
+            icon={<IconAlertCircle size="1rem" />}
             title="Login Failed"
             color="red"
             variant="light"
