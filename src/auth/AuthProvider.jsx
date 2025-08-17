@@ -1,11 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [activeUser, setActiveUser] = useState(null);
+  const [activeUser, setActiveUser] = useState(
+    localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null
+  );
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   // Read from local Storage only after mount
+  //   if (localStorage.getItem("activeUser")) {
+  //     setActiveUser(localStorage.activeUser);
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    // Write to local Storage  on each change of active user
+    if (localStorage.activeUser !== activeUser) {
+      localStorage.setItem("activeUser", JSON.stringify(activeUser));
+    }
+  }, [activeUser]);
 
   const handleLogin = (email, password) => {
     setTimeout(() => {
