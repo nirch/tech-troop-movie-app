@@ -1,4 +1,5 @@
 import {
+  Alert,
   Anchor,
   Button,
   Checkbox,
@@ -28,18 +29,22 @@ export function LoginPage() {
         val.length < 6 ? "Password should include at least 6 characters" : null,
     },
   });
-
   const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState(false);
   const { onLogin } = useAuth();
 
-  function handleLogin() {
-
+  async function handleLogin() {
+    setLoginError(false);
     const validation = form.validate();
     if (validation.hasErrors) {
       console.log(validation);
     } else {
       setLoading(true);
-      onLogin(form.values.email, form.values.password);
+      const error = await onLogin(form.values.email, form.values.password);
+      if (error) {
+        setLoading(false);
+        setLoginError(true);
+      }
     }
   }
 
@@ -54,6 +59,17 @@ export function LoginPage() {
       </Text>
 
       <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
+        {loginError && (
+          <Alert
+            // icon={<IconAlertCircle size="1rem" />}
+            title="Login Failed"
+            color="red"
+            variant="light"
+          >
+            {loginError.message}
+          </Alert>
+        )}
+
         <TextInput
           label="Email"
           required
