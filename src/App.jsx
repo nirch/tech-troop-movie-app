@@ -5,6 +5,7 @@ import ActorsPage from "./pages/ActorsPage";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router";
 import HomePage from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,18 +20,32 @@ function App() {
   };
 
   const handleLogout = () => {
-      setActiveUser(null);
-      navigate("/");
-  }
+    setActiveUser(null);
+    navigate("/");
+  };
 
   return (
     <>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage onLogin={handleLogin}/>} />
-          <Route path="/movies" element={<MoviesPage onLogout={handleLogout}/>} />
-          <Route path="/actors" element={<ActorsPage onLogout={handleLogout}/>} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route
+          path="/movies"
+          element={
+            <ProtectedRoute activeUser={activeUser}>
+              <MoviesPage onLogout={handleLogout} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/actors"
+          element={
+            <ProtectedRoute activeUser={activeUser}>
+              <ActorsPage onLogout={handleLogout} />{" "}
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </>
   );
 }
