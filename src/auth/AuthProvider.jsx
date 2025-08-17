@@ -9,13 +9,6 @@ export function AuthProvider({ children }) {
   );
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   // Read from local Storage only after mount
-  //   if (localStorage.getItem("activeUser")) {
-  //     setActiveUser(localStorage.activeUser);
-  //   }
-  // }, []);
-
   useEffect(() => {
     // Write to local Storage  on each change of active user
     if (localStorage.activeUser !== activeUser) {
