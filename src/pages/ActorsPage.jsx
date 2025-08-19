@@ -12,6 +12,7 @@ function ActorsPage() {
   const [actors, setActors] = useState([]);
   const searchTextDebounced = useDebounce(searchText, 300);
 
+
   useEffect(() => {
     async function getData() {
       const searchURL = `https://api.themoviedb.org/3/search/person?api_key=53d2ee2137cf3228aefae083c8158855&query=${searchText}`;

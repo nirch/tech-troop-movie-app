@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import { Container } from "@mantine/core";
 import { Navbar } from "../components/Navbar";
 import { supabase } from "../data/supabase";
+import { useFetch } from "../hooks/useFetch";
 
 function MoviesPage() {
   const [movies, setMovies] = useState(null);
   const [comedyOnly, setComedyOnly] = useState(false);
   const [filterText, setFilterText] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  // const {data: myMovies, loading, error} = useFetch("https://app.com/movies");
+
 
   useEffect(() => {
     const fetchMovies = async () => {
