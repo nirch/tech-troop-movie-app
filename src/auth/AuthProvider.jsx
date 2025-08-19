@@ -4,7 +4,7 @@ import { supabase } from "../data/supabase";
 
 const AuthContext = createContext(null);
 
-export function AuthProvider({ children }) {
+export function AuthProvider({ onAuthReady, children }) {
   const [activeUser, setActiveUser] = useState(null)
   //   localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null
   // );
@@ -16,6 +16,21 @@ export function AuthProvider({ children }) {
   //     localStorage.setItem("activeUser", JSON.stringify(activeUser));
   //   }
   // }, [activeUser]);
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      const { data, error } = await supabase.auth.getSession();
+
+      console.log(data);
+
+      // checking if there is an open session
+      if (data && data.session && data.session.user) {
+        setActiveUser(data.session.user);
+      }
+      onAuthReady();
+    }
+    fetchSession();
+  }, []);
 
   const handleLogin = async (email, password) => {
     const { data, error } = await supabase.auth.signInWithPassword({

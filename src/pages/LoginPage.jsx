@@ -19,7 +19,7 @@ import { IconAlertCircle } from "@tabler/icons-react";
 export function LoginPage() {
   const form = useForm({
     initialValues: {
-      email: "",
+      email: "nirch@example.com",
       password: "",
     },
     validate: {
