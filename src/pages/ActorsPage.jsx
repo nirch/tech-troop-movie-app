@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ActorCard from "../components/ActorCard";
 import { Navbar } from "../components/Navbar";
+import { useDebounce } from "../hooks/useDebounce";
 
 function ActorsPage() {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [actors, setActors] = useState([]);
+  const searchTextDebounced = useDebounce(searchText, 300);
 
   useEffect(() => {
     async function getData() {
@@ -19,12 +21,12 @@ function ActorsPage() {
       );
     }
 
-    if (searchText) {
+    if (searchTextDebounced) {
       getData();
     } else {
       setSearchResults([]);
     }
-  }, [searchText]);
+  }, [searchTextDebounced]);
 
   function addActor(resultIndex) {
     setActors(actors.concat(searchResults[resultIndex]));
